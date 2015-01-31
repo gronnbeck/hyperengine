@@ -1,0 +1,16 @@
+{
+  "name": "hyperengine",
+  "version": "0.0.5",
+  "description": "HATEOAS framework for node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ken Grønnbeck",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "express": "^4.11.1",
+    "hal": "^0.1.0"
+  }
+}
