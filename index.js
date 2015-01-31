@@ -9,9 +9,7 @@ function hyperengine(resources) {
   for (i = 0; i < resources.length; i++) {
     resource = resources[i]
     app.use(function (req, res, next) {
-      console.log('llololol')
       var match = resource.match(req.path, req.method, req.body);
-      console.log(match)
       if (match === false) return next();
 
       if (req.method === 'GET') {
