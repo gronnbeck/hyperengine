@@ -8,24 +8,35 @@ function hyperengine(resources) {
   var i, resource;
   for (i = 0; i < resources.length; i++) {
     resource = resources[i]
-    app.use(function (req, res, next) {
-      var match = resource.match(req.path, req.method, req.body);
-      if (match === false) return next();
 
-      if (req.method === 'GET') {
-        match.then(function(match){
-          return res.send(match.toJSON());
-        });
-      }
-      else if (req.method === 'POST') {
-        match.then(function(match) {
-            return res.send(match)
-        });
-      }
-      else {
-        throw Error('HTTP Method not implemented in Hyperengine: ' + req.method);
-      }
+    app.get(resource.path, function(req, res) {
+      resource.index().then(function(body){
+        res.send(body.toJSON());
+      });
     });
+
+    app.get(resource.path + '/:id', function(req, res){
+      var id = req.params.id;
+      resource.get(id).then(function(body) {
+        res.send(body.toJSON());
+      });
+    });
+
+    app.post(resource.path, function(req, res) {
+      var body = req.body;
+      resource.create(body).then(function(body) {
+        res.send(body);
+      });
+    });
+
+    app.post(resource.path + '/:id', function(req, res) {
+      var id = req.params.id;
+      var body = req.body;
+      resource.update(id, body).then(function(body) {
+        res.send(body);
+      });
+    });
+
   }
   return app;
 }
