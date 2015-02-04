@@ -36,7 +36,6 @@ function hyperengine(resources) {
         res.send(body);
       });
     });
-
   }
   return app;
 }
