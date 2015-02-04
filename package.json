@@ -11,6 +11,8 @@
   "dependencies": {
     "body-parser": "^1.11.0",
     "express": "^4.11.1",
-    "hal": "^0.1.0"
+    "hal": "^0.1.0",
+    "lodash": "^3.1.0",
+    "tape": "^3.5.0"
   }
 }
