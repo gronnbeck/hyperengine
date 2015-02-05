@@ -13,6 +13,7 @@ test('hyperengine resource path setup', function(t) {
 
   var app = engine([resource]);
   var routes = app._router.stack;
+
   var resourceRoutes = _.filter(routes, function(route) {
     if (route.route === undefined) return false;
     var path = route.route.path;
