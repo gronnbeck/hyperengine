@@ -14,5 +14,8 @@
     "hal": "^0.1.0",
     "lodash": "^3.1.0",
     "tape": "^3.5.0"
+  },
+  "devDependencies": {
+    "blue-tape": "^0.1.8"
   }
 }
