@@ -1,6 +1,6 @@
 {
   "name": "hyperengine",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "HATEOAS framework for node",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "hal": "^0.1.0",
     "lodash": "^3.1.0",
     "mongoose": "^3.8.22",
+    "q": "^1.1.2",
     "tape": "^3.5.0"
   },
   "devDependencies": {

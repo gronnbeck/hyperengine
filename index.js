@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Resource = require('./lib/resource');
+var HyperMongoose = require('./lib/hyper-mongoose');
 
 function link (app, resource, path) {
   app.get(resource.path, function(req, res) {
@@ -55,5 +56,5 @@ function hyperengine(resources) {
 }
 
 hyperengine.Resource = Resource;
-
+hyperengine.HyperMongoose = HyperMongoose;
 module.exports = hyperengine;
