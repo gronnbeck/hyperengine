@@ -13,7 +13,7 @@ function link (app, resource, path) {
       });
     }
     else {
-      resource.get(id).then(function(body) {
+      resource.get(id, req.params).then(function(body) {
         res.send(body.toJSON());
       });
     }
@@ -27,7 +27,7 @@ function link (app, resource, path) {
     if (resource.parent != null) {
       parent = req.params[resource.parent.name + '_id'];
     }
-    
+
     if (id == null) {
       resource.create(body, parent)
       .then(function(body) {
