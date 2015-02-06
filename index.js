@@ -8,7 +8,7 @@ function link (app, resource, path) {
     var id_name = resource.name + '_id';
     var id = req.params[id_name];
     if (id == null) {
-      resource.index().then(function(body){
+      resource.index(req.params).then(function(body){
         res.send(body.toJSON());
       });
     }
@@ -23,8 +23,14 @@ function link (app, resource, path) {
     var id_name = resource.name + '_id';
     var id = req.params[id_name];
     var body = req.body;
+    var parent = null;
+    if (resource.parent != null) {
+      parent = req.params[resource.parent.name + '_id'];
+    }
+    
     if (id == null) {
-      resource.create(body).then(function(body) {
+      resource.create(body, parent)
+      .then(function(body) {
         res.send(body);
       });
     }
