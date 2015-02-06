@@ -8,8 +8,10 @@ var _ = require('lodash');
 test('ViewModelBase removes keys starting with _', function(t) {
   t.plan(1);
   var data = {
-    '_id': 'this is key',
-    str: 'this is a value'
+    '_doc': {
+      '_id': 'this is key',
+      str: 'this is a value'
+    }
   }
 
   var vm = new HyperMongoose.ViewModelBase(data);
@@ -20,8 +22,11 @@ test('ViewModelBase removes keys starting with _', function(t) {
 test('ViewModelBase standard maps _id to id', function(t) {
   t.plan(2)
   var val = 'this is key';
+
   var data = {
-    '_id': val,
+    '_doc': {
+      '_id': val
+    }
   }
 
   var vm = new HyperMongoose.ViewModelBase(data);
