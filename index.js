@@ -62,7 +62,7 @@ function hyperengine(resources) {
 
   app.get('/', function (req, res) {
     var indexResource = new IndexResource(resources);
-    res.send(indexResource.toJSON());
+    res.send(indexResource);
   });
 
   return app;
