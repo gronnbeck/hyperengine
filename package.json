@@ -4,8 +4,7 @@
   "description": "HATEOAS framework for node",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/index.js",
-    "preinstall": "bower install"
+    "test": "node tests/index.js"
   },
   "author": "Ken Grønnbeck",
   "license": "MIT",
