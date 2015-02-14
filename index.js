@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var Resource = require('./lib/resource');
 var HyperMongoose = require('./lib/hyper-mongoose');
+var IndexResource = require('./lib/index-resource');
 
 function link (app, resource, path) {
   app.get(resource.path, function(req, res) {
@@ -58,6 +59,12 @@ function hyperengine(resources) {
     resource = resources[i]
     link(app, resource);
   }
+
+  app.get('/', function (req, res) {
+    var indexResource = new IndexResource(resources);
+    res.send(indexResource.toJSON());
+  });
+
   return app;
 }
 
