@@ -2,6 +2,7 @@ var test = require('blue-tape');
 var Resource = require('../lib/resource');
 var Q = require('q');
 var hal = require('hal');
+var _ = require('lodash');
 
 test('resource path test', function (t) {
     t.plan(1);
@@ -29,18 +30,35 @@ test('resource link path test', function(t) {
   t.equal(resource2.path, '/res2/:res2_id?');
 });
 
-test('resource get object model test', function(t) {
-
-  var obj = { hello: 'world' };
-  var get = function(id) {
+var dummyRepo = {
+  obj: { hello: 'world' },
+  get: function(id) {
     var def = Q.defer();
-    def.resolve(obj);
+    def.resolve(this.obj);
     return def.promise;
   }
-  var resource = new Resource('res', { get: get })
+}
+
+test('resource get object model test', function(t) {
+  var resource = new Resource('res', dummyRepo);
   var promise = resource.get();
   return promise.then(function(model){
-    t.deepEqual(model, new hal.Resource(obj, resource.path));
+    t.deepEqual(model, new hal.Resource(dummyRepo.obj, resource.path),
+      'model should be a hal resource');
   });
 
+});
+
+test('resource get() has hal specifed _links', function (t) {
+  var resource = new Resource('res', dummyRepo);
+  var subresource = new Resource('subres', {});
+  resource.link(subresource);
+  var promise = resource.get();
+  return promise.then(function(model) {
+      t.ok(_.has(model, '_links'),
+        'model should contain _links');
+
+      t.ok(_.has(model._links, 'subres'),
+        'model _links should refer to subresource')
+  });
 });
