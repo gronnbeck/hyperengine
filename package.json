@@ -4,7 +4,8 @@
   "description": "HATEOAS framework for node",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/index.js"
+    "test": "node tests/index.js",
+    "tape": "tape tests/*.js tests/engine2/*.js"
   },
   "author": "Ken Grønnbeck",
   "license": "MIT",
@@ -19,6 +20,9 @@
   },
   "devDependencies": {
     "blue-tape": "^0.1.8",
+    "gulp": "^3.8.11",
+    "gulp-notify": "^2.2.0",
+    "gulp-shell": "^0.3.0",
     "hyperagent": "^0.2.8",
     "traverson": "^0.15.0"
   }
