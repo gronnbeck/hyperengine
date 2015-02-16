@@ -3,7 +3,7 @@
 * Write my own hal resource model.
   * hal.js has not been maintained for over 2 years.
   * learn more about hal specification
-* Build resource based on:
+* Build resource based on (and maintain hal-spec):
   * A Graph (programatically)
   * Route config (text)
 
